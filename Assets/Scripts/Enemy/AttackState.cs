@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackState : IEnemyState {
 
     EnemyAI enemy;
-    float timeBetweenAttacks = 5f;
+    float timeBetweenAttacks = 3.5f;
     float currentTime = 0;
 
     public AttackState(EnemyAI enemy) {

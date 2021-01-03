@@ -1,10 +1,41 @@
 <language>
-  <play>Play</play>
-	<settings>Settings</settings>
-  <exit>Exit</exit>
+  <play>PLAY</play>
+	<settings>SETTINGS</settings>
+  <exit>EXIT</exit>
+  <retry>RETRY</retry>
   <language>Language</language>
 	<music>Music</music>
 	<sound>Sound</sound>
   <accept>Accept</accept>
   <resume>Resume</resume>
+  <wakeup>Wake Up</wakeup>
+  <next>Next</next>
+  <talk>Talk</talk>
+  <grab>Grab</grab>
+  <intromessage0>Hey! Are you ok? Looks like you had a boat accident. Can you hear me? Are you awake? Can you stand up?</intromessage0>
+  <intromessage1>Finally, I thought you didn't make it. My name is Eyra, nice to meet you.</intromessage1>
+  <intromessage2>¿Como dices? ¿Que donde estamos? Esta es la isla de Kattegat, antes era una isla prospera pero ahora...</intromessage2>
+  <intromessage3>Desde que el señor oscuro tomó nuestras tierras, ninguna isla esta libre de monstruos.</intromessage3>
+  <intromessage4>Kattegat había conseguido resistir hasta dias atras, pero finalmente cayó y todos los habitantes huyeron.</intromessage4>
+  <intromessage5>Yo soy constructora de barcos, cuando volvia a mi taller a por mi herramientas me quedé atrapada en mi taller y se fueron sin mi.</intromessage5>
+  <intromessage6>¿Crees que podrias ayudarme? Si consigues mis herramientas y un poco de madera podría construir un barco y salir de aquí juntos.</intromessage6>
+  <intromessage7>Toma usa esta espada y arco que cogí cuando escapaba de la ciudad, con ellos podras luchar y defenderte contra los monstruos. Solo necesito mis herramientas y 10 troncos de madera.</intromessage7>
+  <intromessage8>Muchas suerte, confio en ti para salir de esta isla. Si necesitas algo más ven a hablar conmigo.</intromessage8>
+  <whatcanido>What can I do for you?</whatcanido>
+  <rest>Rest</rest>
+  <logs>Wood Logs</logs>
+  <tools>Tools</tools>
+  <yes>Yes</yes>
+  <no>No</no>
+  <noanswer>Oh, I see, no problem. Do you need anything else?</noanswer>
+  <restanswer>¿Quieres descansar? Descansar te recuperará toda la vida pero todos los enemigos volverán a aparecer, ¿estas seguro que quieres descansar?</restanswer>
+  <restansweryes>De acuerdo. Nos vemos en mañana, ¡que descanses bien!</restansweryes>
+  <logsanswer>¿Ya tienes todos los troncos? Necesitaré 10 troncos para poder arreglar tu barco y poder irnos de aqui.</logsanswer>
+  <logsansweryes>Genial, muchas gracias, con esto ya tengo todos los troncos que necesito. ¿Querías algo más?</logsansweryes>
+  <logsanswerno>¿Eh? Pero..., ah ya entiendo, ¿es una broma verdad? Avisame cuando tengas todos los troncos necesarios para irnos. ¿Necesitas algo más?</logsanswerno>
+  <toolsanswer>¿Has encontrado mis herramientas? ¿Me las puedes dar? Me siento rara si no tengo mis herramientas conmigo.</toolsanswer>
+  <toolsansweryes>¡Perfecto!, eres el mejor, ya estamos más cerca de poder escapar de esta isla. ¿Querías algo más?</toolsansweryes>
+  <toolsanswerno>¿Eh? Pero..., ah ya entiendo, ¿es una broma verdad? Avisame cuando tengas mis herramientas. ¿Necesitas algo más?</toolsanswerno>
+  <mission1>Consigue 10 troncos</mission1>
+  <mission2>Recupera las herramientas de Eyra</mission2>
 </language>

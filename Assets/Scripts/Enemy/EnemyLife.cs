@@ -16,10 +16,12 @@ public class EnemyLife : MonoBehaviour {
     [SerializeField]
     GameObject deathParticle;
 
+    AudioSource audioSource;
     public Slider lifeSlider;
 
     // Start is called before the first frame update
     void Start() {
+        audioSource = GetComponent<AudioSource>();
         enemyAI = GetComponent<EnemyAI>();
         currentLife = totalLife;
         lifeSlider.maxValue = totalLife;
@@ -29,6 +31,7 @@ public class EnemyLife : MonoBehaviour {
     public void Hit(float damage) {
         GameObject particle = Instantiate(hitParticle, transform.position, Quaternion.identity);
         Destroy(particle, 3f);
+        audioSource.Play();
         currentLife -= damage;
         enemyAI.Reset();
         lifeSlider.value = currentLife;

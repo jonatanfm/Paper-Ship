@@ -1,18 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TextUpdate : MonoBehaviour {
 
     private LanguageSystem languageSystem;
-    [SerializeField]
-    private string dictionaryKey;
 
-    private Text text;
+    public string dictionaryKey;
+
+    private TMP_Text text;
 
     private string concatString = "";
 
     void Start() {
-        text = GetComponent<Text>();
+        ManualStart();
+    }
+
+    public void ManualStart() {
+        text = GetComponent<TMP_Text>();
+
         languageSystem = FindObjectOfType<LanguageSystem>();
 
         languageSystem.languageChangeEvent.AddListener(LanguageChanged);
@@ -24,14 +30,14 @@ public class TextUpdate : MonoBehaviour {
         UpdateText();
     }
 
-    private void UpdateText() {
-        text.text = languageSystem.currentDictionary[dictionaryKey] + concatString;
+    public void UpdateText() {
+        if (text != null && languageSystem != null && languageSystem.currentDictionary != null) 
+            text.text = languageSystem.currentDictionary[dictionaryKey] + concatString;
+        
     }
 
     public void AddConcatString(string text) {
         concatString = text;
         UpdateText();
     }
-
-    
 }

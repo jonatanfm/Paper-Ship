@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour {
 
     const int GAME_SCENE = 1;
+    const int INTRO_SCENE = 2;
 
     [SerializeField]
     private GameObject menu;
@@ -16,6 +17,10 @@ public class MenuManager : MonoBehaviour {
 
     public void PlayGame() {
         SceneManager.LoadScene(GAME_SCENE);
+    }
+
+    public void PlayIntro() {
+        SceneManager.LoadScene(INTRO_SCENE);
     }
 
     public void OpenSettings(bool open) {
@@ -30,7 +35,7 @@ public class MenuManager : MonoBehaviour {
         #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
         #else
-                    Application.Quit();
+                Application.Quit();
         #endif
     }
 

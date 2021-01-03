@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class SettingsManager : MonoBehaviour {
 
@@ -13,6 +14,9 @@ public class SettingsManager : MonoBehaviour {
     
     [SerializeField]
     private Slider volumeSlider, soundSlider;
+
+    [SerializeField]
+    private AudioMixer audioMixer;
 
 
     private void Start() {
@@ -36,10 +40,12 @@ public class SettingsManager : MonoBehaviour {
 
     public void SetVolume(float volume) {
         prefManager.SetVolume(volume);
+        audioMixer.SetFloat("Volume", volume);
     }
 
     public void SetSound(float sound) {
         prefManager.SetSound(sound);
+        audioMixer.SetFloat("Sound", sound);
     }
 
 

@@ -101,6 +101,7 @@ public class WeaponController : MonoBehaviour {
 
     private void ThroughArrow(float force, bool useGround) {
         if (currentArrow != null) {
+            weapons[BOW_IDX].GetComponent<AudioSource>().Play();
             arrows--;
             arrowsUI.text = arrows.ToString();
             currentArrow.GetComponent<Arrow>().Shoot(force, useGround);
@@ -153,7 +154,9 @@ public class WeaponController : MonoBehaviour {
         canChangeWeapon = false;
         m_Animator.SetBool("AttackSword", true);
         weapons[SWORD_IDX].GetComponent<Weapon>().ActivateWeapon();
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(0.8f);
+        weapons[SWORD_IDX].GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(0.5f);
         m_Animator.SetBool("AttackSword", false);
 
         canChangeWeapon = true;
