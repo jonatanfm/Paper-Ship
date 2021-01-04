@@ -16,10 +16,6 @@ public class MissionController : MonoBehaviour {
         UpdateToolsMission();
     }
 
-    void Update() {
-        
-    }
-
     void UpdateLogsMission() {
         mission1.AddConcatString(" (" + currentLogs + "/" + logsToGet + ")");
     }
@@ -36,6 +32,14 @@ public class MissionController : MonoBehaviour {
     public void AddTools() {
         hasTools = true;
         UpdateToolsMission();
+    }
+
+    public void HideLogMission() {
+        mission1.gameObject.SetActive(false);
+    }
+
+    public void HideToolsMission() {
+        mission2.gameObject.SetActive(false);
     }
 
 }

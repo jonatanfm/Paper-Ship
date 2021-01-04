@@ -26,8 +26,6 @@ public class IntroManager : MonoBehaviour {
     [SerializeField]
     private Animator playerAnimator;
 
-
-
     [SerializeField]
     private GameObject sword;
     [SerializeField]

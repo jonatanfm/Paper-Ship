@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class NPCController : MonoBehaviour {
     [SerializeField]
@@ -22,23 +23,27 @@ public class NPCController : MonoBehaviour {
     private GameObject cam;
     [SerializeField]
     private EnemiesController enemiesController;
+    [SerializeField]
+    private TMP_Text endGameText;
 
     bool hasLogs = false;
     bool hasTools = false;
 
     [SerializeField]
-    private Button exitButton,restButton, logsButton, toolButton, yesButton, noButton;
+    private Button exitButton,restButton, logsButton, toolButton, letsgoButton, yesButton, noButton;
 
     bool playerIsNear = false;
     bool isTalking = false;
 
     MissionController missionController;
+    GameManager gameManager;
 
     enum TalkState {
         INTRO,
         REST,
         LOGS,
         TOOLS,
+        LETGO
     }
 
     TalkState currentTalkState;
@@ -46,6 +51,7 @@ public class NPCController : MonoBehaviour {
     private void Start() {
         conversationTextUpdate = conversationText.GetComponent<TextUpdate>();
         missionController = FindObjectOfType<MissionController>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update() {
@@ -97,6 +103,7 @@ public class NPCController : MonoBehaviour {
         restButton.gameObject.SetActive(optionsActive);
         toolButton.gameObject.SetActive(optionsActive && !hasTools);
         logsButton.gameObject.SetActive(optionsActive && !hasLogs);
+        letsgoButton.gameObject.SetActive(optionsActive && hasLogs && hasTools);
         yesButton.gameObject.SetActive(!optionsActive);
         noButton.gameObject.SetActive(!optionsActive);
     }
@@ -116,6 +123,12 @@ public class NPCController : MonoBehaviour {
     public void Tools() {
         currentTalkState = TalkState.TOOLS;
         SetConverationText("toolsanswer");
+        ShowTalkButtons(false);
+    }
+
+    public void Letgo() {
+        currentTalkState = TalkState.LETGO;
+        SetConverationText("letsgosanswer");
         ShowTalkButtons(false);
     }
 
@@ -151,7 +164,7 @@ public class NPCController : MonoBehaviour {
                     if (missionController.currentLogs == 10) {
                         SetConverationText("logsansweryes");
                         hasLogs = true;
-
+                        missionController.HideLogMission();
                     } else
                         SetConverationText("logsanswerno");
                     ShowTalkButtons(true);
@@ -161,9 +174,15 @@ public class NPCController : MonoBehaviour {
                     if (missionController.hasTools) {
                         SetConverationText("toolsansweryes");
                         hasTools = true;
+                        missionController.HideToolsMission();
                     } else
                         SetConverationText("toolsanswerno");
                     ShowTalkButtons(true);
+                    break;
+                case TalkState.LETGO:
+                    currentTalkState = TalkState.INTRO;
+                    SetConverationText("letsgosansweryes");
+                    StartCoroutine(EndGame());
                     break;
             }
         } else {
@@ -176,6 +195,7 @@ public class NPCController : MonoBehaviour {
     IEnumerator DoRest() {
         fadeImage.gameObject.SetActive(true);
         Time.timeScale = 0;
+        gameManager.gameStarted = false;
         Color fadeColor = fadeImage.color;
         float opacity = 0;
         fadeColor.a = opacity;
@@ -204,6 +224,39 @@ public class NPCController : MonoBehaviour {
         }
 
         Time.timeScale = 1;
+        gameManager.gameStarted = true;
         fadeImage.gameObject.SetActive(false);
+    }
+
+    IEnumerator EndGame() {
+        fadeImage.gameObject.SetActive(true);
+        Time.timeScale = 0;
+        gameManager.gameStarted = false;
+        Color fadeColor = fadeImage.color;
+        float opacity = 0;
+        fadeColor.a = opacity;
+        fadeImage.color = fadeColor;
+
+        while (opacity <= 1) {
+            opacity += 0.05f;
+            fadeColor.a = opacity;
+            fadeImage.color = fadeColor;
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+
+        string endText = FindObjectOfType<LanguageSystem>().currentDictionary["endgame"];
+        char[] endTextArray = endText.ToCharArray();
+        string text = "";
+
+
+        for(int i = 0; i<endTextArray.Length; i++) {
+            text += endTextArray[i];
+            endGameText.text = text;
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+
+        yield return new WaitForSecondsRealtime(2f);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 }

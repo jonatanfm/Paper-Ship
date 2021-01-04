@@ -17,9 +17,9 @@ public class DayManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > 40) 
+        if (elapsedTime > totalSecondsTo16Hours) 
             Reset();
-        
+
 
         float rot = (endDayRotationX - startDayRotationX) / totalSecondsTo16Hours;
         directional.transform.Rotate(-rot * Time.deltaTime, 0, 0);

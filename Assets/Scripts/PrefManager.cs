@@ -19,12 +19,8 @@ public class PrefManager : MonoBehaviour {
         if (!PlayerPrefs.HasKey(VOLUME_KEY)) 
             PlayerPrefs.SetFloat(VOLUME_KEY, VOLUME_INIT);
 
-        //change global volume level
-
         if (!PlayerPrefs.HasKey(SOUND_KEY)) 
             PlayerPrefs.SetFloat(SOUND_KEY, SOUND_INIT);
-
-        //change global sound level
     }
 
 
@@ -43,7 +39,6 @@ public class PrefManager : MonoBehaviour {
 
     public void SetVolume(float volume) {
         PlayerPrefs.SetFloat(VOLUME_KEY, volume);
-        //change global volume level
     }
 
     public float GetSound() {
@@ -52,6 +47,5 @@ public class PrefManager : MonoBehaviour {
 
     public void SetSound(float sound) {
         PlayerPrefs.SetFloat(SOUND_KEY, sound);
-        //change global sound level
     }
 }

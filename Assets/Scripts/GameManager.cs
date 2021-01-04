@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private Image fadeImage;
 
-    bool gameStarted = false;
+    public bool gameStarted = false;
     [HideInInspector]
     public static bool gameRunning = true;
     [SerializeField]

@@ -8,20 +8,17 @@ public class ThirdPersonUserControl : MonoBehaviour {
     private Vector3 m_CamForward;             
     private Vector3 m_Move;
     private bool m_Jump;                      
-
         
     private void Start() {
         m_Cam = Camera.main.transform;
         m_Character = GetComponent<ThirdPersonCharacter>();
     }
 
-
     private void Update() {
         if (!m_Jump)
             m_Jump = Input.GetButtonDown("Jump");
             
     }
-
 
     private void FixedUpdate() { 
         float h = Input.GetAxis("Horizontal");

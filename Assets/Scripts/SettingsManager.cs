@@ -47,6 +47,4 @@ public class SettingsManager : MonoBehaviour {
         prefManager.SetSound(sound);
         audioMixer.SetFloat("Sound", sound);
     }
-
-
 }
