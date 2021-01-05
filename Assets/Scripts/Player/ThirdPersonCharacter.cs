@@ -8,7 +8,6 @@ public class ThirdPersonCharacter : MonoBehaviour {
 	[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 	[SerializeField] float m_RunCycleLegOffset = 0.2f; 
 	[SerializeField] float m_MoveSpeedMultiplier = 1f;
-	[SerializeField] float m_AnimSpeedMultiplier = 1f;
 	[SerializeField] float m_GroundCheckDistance = 0.1f;
     [SerializeField] FreeLookCam cam;
 
@@ -109,11 +108,6 @@ public class ThirdPersonCharacter : MonoBehaviour {
 		float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
 		if (m_IsGrounded)
 		    m_Animator.SetFloat("JumpLeg", jumpLeg);
-
-		if (m_IsGrounded && move.magnitude > 0)
-			m_Animator.speed = m_AnimSpeedMultiplier;
-		else
-			m_Animator.speed = 1;
 	}
 
 
@@ -142,9 +136,9 @@ public class ThirdPersonCharacter : MonoBehaviour {
 
 	public void OnAnimatorMove() {
 		if (m_IsGrounded && Time.deltaTime > 0) {
-			Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
-
-			v.y = m_Rigidbody.velocity.y;
+            Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
+            
+            v.y = m_Rigidbody.velocity.y;
 			m_Rigidbody.velocity = v;
 		}
 	}

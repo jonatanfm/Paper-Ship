@@ -5,20 +5,24 @@ using UnityEngine;
 public class AttackState : IEnemyState {
 
     EnemyAI enemy;
-    float timeBetweenAttacks = 3.5f;
+    float minTimeBetweenAttacks = 2.5f;
+    float maxTimeBetweenAttacks = 5f;
+    float nextAttackTime = 0f;
     float currentTime = 0;
 
     public AttackState(EnemyAI enemy) {
         this.enemy = enemy;
+        nextAttackTime = Random.Range(minTimeBetweenAttacks, maxTimeBetweenAttacks);
     }
 
     public void UpdateState() {
         enemy.transform.LookAt(enemy.player.transform);
 
         currentTime += Time.deltaTime;
-        if (currentTime > timeBetweenAttacks) {
+        if (currentTime > nextAttackTime) {
             enemy.animator.SetTrigger("Attack");
             currentTime = 0;
+            nextAttackTime = Random.Range(minTimeBetweenAttacks, maxTimeBetweenAttacks);
         }
         if (Vector3.Distance(enemy.transform.position, enemy.player.transform.position) > 2f)
             GoToFollowState();

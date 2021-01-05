@@ -50,4 +50,8 @@ public class EnemyAI : MonoBehaviour {
     public void Reset() {
         currentState.Reset();
     }
+
+    public void Stop() {
+        navMeshAgent.enabled = false;
+    }
 }

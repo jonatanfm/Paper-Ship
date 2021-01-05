@@ -159,6 +159,7 @@ MonoBehaviour:
   totalLife: 100
   hitParticle: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   deathParticle: {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
+  deadSound: {fileID: 8300000, guid: de9e4f9fc5bd0984da0911cae71c9036, type: 3}
   lifeSlider: {fileID: 3221336056933822097}
 --- !u!135 &1445053428
 SphereCollider:
@@ -230,7 +231,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.53
       inSlope: 0
       outSlope: 0
       tangentMode: 0

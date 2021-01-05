@@ -33,6 +33,7 @@ public class WeaponController : MonoBehaviour {
 
     int activeWeaponIdx = NO_WEAPON_IDX;
 
+    int initialArrows = 50;
     int arrows = 50;
 
     [SerializeField]
@@ -74,12 +75,7 @@ public class WeaponController : MonoBehaviour {
             StartCoroutine(StartAimShoot(true));
         else if (aiming && Input.GetMouseButtonUp(0))
             StartCoroutine(StartAimShoot(false));
-
-
-        if (Input.GetKeyDown(KeyCode.Q))
-            Debug.Break();
     }
-
 
     IEnumerator StartAimShoot(bool draw) {
         if (draw) {
@@ -112,6 +108,15 @@ public class WeaponController : MonoBehaviour {
             }
             currentArrow = null;
         }
+    }
+
+    public void ResetArrows() {
+        arrows = initialArrows;
+        arrowsUI.text = arrows.ToString();
+    }
+
+    public void EnableAttack(bool enable) {
+        canChangeWeapon = enable;
     }
 
     private void CreateArrow() {

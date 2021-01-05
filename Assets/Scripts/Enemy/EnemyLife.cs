@@ -15,6 +15,8 @@ public class EnemyLife : MonoBehaviour {
     GameObject hitParticle;
     [SerializeField]
     GameObject deathParticle;
+    [SerializeField]
+    AudioClip deadSound;
 
     AudioSource audioSource;
     public Slider lifeSlider;
@@ -37,8 +39,10 @@ public class EnemyLife : MonoBehaviour {
         lifeSlider.value = currentLife;
         if (currentLife <= 0) {
             GetComponent<Animator>().SetBool("Death", true);
+            audioSource.PlayOneShot(deadSound);
+            enemyAI.Stop();
             enemyAI.enabled = false;
-            Destroy(this.gameObject, 2f);
+            Destroy(this.gameObject, 1f);
             GameObject particle2 = Instantiate(deathParticle, transform.position, Quaternion.identity);
             Destroy(particle2, 3f);
         } else 

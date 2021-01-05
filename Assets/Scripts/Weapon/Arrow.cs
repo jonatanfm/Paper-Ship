@@ -6,11 +6,12 @@ public class Arrow : MonoBehaviour {
 
     Rigidbody rb;
     float range = 100f;
+    bool destroying = false;
 
     private void Start() {
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(Die());
     }
-
 
     public void Shoot(float force, bool useGround) {
         GetComponent<Weapon>().ActivateWeapon();
@@ -41,11 +42,11 @@ public class Arrow : MonoBehaviour {
             transform.Rotate(0, 30f, 0);
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (!other.CompareTag("Player") && !other.CompareTag("Enemy")) {
-            GetComponent<BoxCollider>().enabled = false;
-            rb.isKinematic = true;
-            rb.constraints = RigidbodyConstraints.FreezeAll;
-        }
+    IEnumerator Die() {
+        yield return new WaitForSeconds(10f);
+        GetComponent<BoxCollider>().enabled = false;
+        rb.isKinematic = true;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        Destroy(gameObject);
     }
 }

@@ -149,6 +149,7 @@ public class NPCController : MonoBehaviour {
         player.GetComponent<ThirdPersonUserControl>().enabled = enable;
         player.GetComponent<ThirdPersonCharacter>().enabled = enable;
         cam.GetComponent<FreeLookCam>().enabled = enable;
+        player.GetComponent<WeaponController>().EnableAttack(enable);
     }
 
     public void ConfirmAction(bool yes) {
@@ -209,7 +210,8 @@ public class NPCController : MonoBehaviour {
         }
 
         Exit();
-        FindObjectOfType<LifeManager>().ResetLife();
+        player.GetComponent<LifeManager>().ResetLife();
+        player.GetComponent<WeaponController>().ResetArrows();
         enemiesController.ReloadEnemies();
 
         opacity = 1;
