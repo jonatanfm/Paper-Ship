@@ -3140,7 +3140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mission1: {fileID: 406090019}
   mission2: {fileID: 1544640374}
-  currentLogs: 0
+  currentLogs: 7
   hasTools: 0
 --- !u!1001 &841040326
 PrefabInstance:
@@ -3479,6 +3479,25 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &980628171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8089360487514469153, guid: 250267554bdf95846be25a14e974e6c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1877901675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &980628175
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980628171}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.9499578, z: 1}
+  m_Center: {x: 0, y: 0.9749758, z: 0}
 --- !u!4 &1021729006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4885079432260988, guid: e26bee3f6e425c24f8852634eb49b11d,
@@ -4724,7 +4743,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1877901675}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 980628171}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 335dc5f788aa4334cb49eabb586a9bf2, type: 3}
@@ -9034,7 +9053,7 @@ PrefabInstance:
     - target: {fileID: 8865615338202540443, guid: 250267554bdf95846be25a14e974e6c7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.41
+      value: -1.59
       objectReference: {fileID: 0}
     - target: {fileID: 8865615338202540443, guid: 250267554bdf95846be25a14e974e6c7,
         type: 3}
