@@ -47,4 +47,8 @@ public class GameManager : MonoBehaviour {
         fadeImage.gameObject.SetActive(false);
         gameStarted = true;
     }
+
+    public void GameOver() {
+
+    }
 }

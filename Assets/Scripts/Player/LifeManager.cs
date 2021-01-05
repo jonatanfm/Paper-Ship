@@ -16,7 +16,12 @@ public class LifeManager : MonoBehaviour {
     GameObject hitParticle;
 
     AudioSource audioSource;
+    [SerializeField]
+    AudioClip deadSound;
 
+
+    [SerializeField]
+    GameObject gameOverUI;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -34,18 +39,31 @@ public class LifeManager : MonoBehaviour {
     }
 
     public void Hit(float damage) {
-        audioSource.Play();
         currentLife -= damage;
         lifeSlider.value = currentLife;
         GameObject particle = Instantiate(hitParticle, transform.position, Quaternion.identity);
         Destroy(particle, 3f);
         if (currentLife <= 0)
             Die();
-        else
+        else {
             animator.SetTrigger("Hit");
+            audioSource.Play();
+        }
     }
 
     void Die() {
+        audioSource.PlayOneShot(deadSound);
         animator.SetBool("Death", true);
+        StartCoroutine(GameOver());
+    }
+
+    IEnumerator GameOver() {
+        foreach (EnemyAI enemyAI in FindObjectsOfType<EnemyAI>()) {
+            enemyAI.Stop();
+            enemyAI.enabled = false;
+        }
+        FindObjectOfType<FreeLookCam>().enabled = false;
+        yield return new WaitForSeconds(2f);
+        gameOverUI.SetActive(true);
     }
 }
