@@ -63,6 +63,7 @@ public class LifeManager : MonoBehaviour {
             enemyAI.enabled = false;
         }
         FindObjectOfType<FreeLookCam>().enabled = false;
+        FindObjectOfType<GameManager>().gameStarted = false;
         yield return new WaitForSeconds(2f);
         gameOverUI.SetActive(true);
     }
